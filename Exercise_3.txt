@@ -1,0 +1,17 @@
+                Exercise_3
+
+Q_1 select concat(upper(substr(sname,1,1)),lower(substr(sname,2)))as sname from s;
+
+Q_2 select upper(Sname) from s;
+
+Q_3 select lower(Sname) from s;
+
+Q_4 select lpad(Sname,25,'') from s;
+
+Q_5 select replace(Sname,'la','ro')from s;
+
+Q_6 select replace (replace(sname,'l', 'r'),'a','o') from s;
+
+Q_7 select sname, length(sname) from s;
+
+Q_8 select * from s where soundex(sname) = soundex("Akshay");
