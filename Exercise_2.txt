@@ -1,0 +1,80 @@
+Q.1) Display the supplier table in the descending order of CITY.
+
+select *from s
+order by city desc;
++------+--------+--------+--------+
+| S#   | sname  | status | city   |
++------+--------+--------+--------+
+| s1   | akshay | 10     | paris  |
+| s4   | sumit  | 15     | paris  |
+| s3   | akash  | 30     | london |
+| s2   | amit   | 20     | athens |
++------+--------+--------+--------+
+
+Q.2) Display the part table in the ascending order of the CITY and within the city in the ascending order of part names.
+
+select *from p
+order by city,pname;
++------+-----------+-------+--------+--------+
+| P#   | Pname     | Color | Weignt | City   |
++------+-----------+-------+--------+--------+
+| p3   | chain     | black | 11kg   | athens |
+| p2   | cam_shaft | gray  | 14kg   | london |
+| p1   | gear      | white | 13kg   | paris  |
++------+-----------+-------+--------+--------+
+
+Q.3) Display all the suppliers with a status between 10 and 20.
+
+insert into s 
+values('s4','sumit','15','paris');
+
+select *from s
+where status > 10 and status < 20;
++------+-------+--------+-------+
+| S#   | sname | status | city  |
++------+-------+--------+-------+
+| s4   | sumit | 15     | paris |
++------+-------+--------+-------+
+
+Q.4) Display all the parts and their weight,which are not in the range of 10 and 15.
+
+select *from p
+where weignt not in (10,15); 
++------+-----------+-------+--------+--------+
+| P#   | Pname     | Color | Weignt | City   |
++------+-----------+-------+--------+--------+
+| p1   | gear      | white | 13kg   | paris  |
+| p2   | cam_shaft | gray  | 14kg   | london |
+| p3   | chain     | black | 11kg   | athens |
++------+-----------+-------+--------+--------+
+
+Q.5) Display all the part names starting with the letter 'S'.
+
+insert into p
+values(`p#`,'spark','gray','2kg','paris');
+
+select pname from p
+where pname like 's%';
++-------+
+| pname |
++-------+
+| spark |
++-------+
+
+Q.6) Display all the suppliers,beloning to cities starting with letter 'L'.
+
+select *from s
+where city like 'l%';
++------+-------+--------+--------+
+| S#   | sname | status | city   |
++------+-------+--------+--------+
+| s3   | akash | 30     | london |
++------+-------+--------+--------+
+
+Q.7) Display all the projects, with the third letter in JNAME as 'N'.
+
+insert into j
+values('j4','avni','athens');
+
+select *from j
+where jname like '--n%';
