@@ -1,0 +1,233 @@
+Q.1) 
+create table semp
+(
+empno char(4)NOT NULL,
+empname char(20)NOT NULL,
+basic float(9,2),
+deptno char(2),
+depthead char(4),
+primary key(empno)
+);
++----------+------------+------+-----+---------+-------+
+| Field    | Type       | Null | Key | Default | Extra |
++----------+------------+------+-----+---------+-------+
+| empno    | char(4)    | NO   | PRI | NULL    |       |
+| empname  | char(20)   | NO   |     | NULL    |       |
+| basic    | float(9,2) | YES  |     | NULL    |       |
+| deptno   | char(2)    | YES  |     | NULL    |       |
+| depthead | char(4)    | YES  |     | NULL    |       |
++----------+------------+------+-----+---------+-------+
+
+Q.2)
+create table sdept
+(
+deptno char(2),
+deptname char(15),
+primary key(deptno)
+);
++----------+----------+------+-----+---------+-------+
+| Field    | Type     | Null | Key | Default | Extra |
++----------+----------+------+-----+---------+-------+
+| deptno   | char(2)  | NO   | PRI | NULL    |       |
+| deptname | char(15) | YES  |     | NULL    |       |
++----------+----------+------+-----+---------+-------+
+
+Q.3)
+
+select *from sdept;
++--------+-------------+
+| deptno | deptname    |
++--------+-------------+
+| 10     | Development |
+| 20     | Training    |
++--------+-------------+
+
+Q.4)
+
+insert into SEMP
+values
+(0001,'SUNIL',6000,10,NULL),
+(0002,'HIREN',8000,20,NULL),
+(0003,'ALI',4000,10,0001),
+(0004,'GEORGE',6000,NULL,0002);
+
+SELECT *from semp;
+
++-------+---------+---------+--------+----------+
+| empno | empname | basic   | deptno | depthead |
++-------+---------+---------+--------+----------+
+| 1     | SUNIL   | 6000.00 | 10     | NULL     |
+| 2     | HIREN   | 8000.00 | 20     | NULL     |
+| 3     | ALI     | 4000.00 | 10     | 1        |
+| 4     | GEORGE  | 6000.00 | NULL   | 2        |
++-------+---------+---------+--------+----------+
+
+ (A)SUPPLIER:
+create table S
+(
+`S#` varchar(4),
+sname varchar(10),
+status varchar(4),
+city varchar(10)
+);
++--------+-------------+------+-----+---------+-------+
+| Field  | Type        | Null | Key | Default | Extra |
++--------+-------------+------+-----+---------+-------+
+| S#     | varchar(4)  | YES  |     | NULL    |       |
+| sname  | varchar(10) | YES  |     | NULL    |       |
+| status | varchar(4)  | YES  |     | NULL    |       |
+| city   | varchar(10) | YES  |     | NULL    |       |
++--------+-------------+------+-----+---------+-------+
+ (B)PARTS:
+create table P
+(
+`P#` varchar(4),
+Pname char(10),
+Color char(10),
+Weignt char(5),
+City char(10)
+);
++--------+------------+------+-----+---------+-------+
+| Field  | Type       | Null | Key | Default | Extra |
++--------+------------+------+-----+---------+-------+
+| P#     | varchar(4) | YES  |     | NULL    |       |
+| Pname  | char(10)   | YES  |     | NULL    |       |
+| Color  | char(10)   | YES  |     | NULL    |       |
+| Weignt | char(5)    | YES  |     | NULL    |       |
+| City   | char(10)   | YES  |     | NULL    |       |
++--------+------------+------+-----+---------+-------+
+ (C)PROJECTS:
+create table J
+(
+`J#` varchar(4),
+Jname char(10),
+City char(10)
+);
++-------+------------+------+-----+---------+-------+
+| Field | Type       | Null | Key | Default | Extra |
++-------+------------+------+-----+---------+-------+
+| J#    | varchar(4) | YES  |     | NULL    |       |
+| Jname | char(10)   | YES  |     | NULL    |       |
+| City  | char(10)   | YES  |     | NULL    |       |
++-------+------------+------+-----+---------+-------+
+ (D)SUPPLIER-PARTS-PROJECTS:
+create table SPJ
+(
+`S#` varchar(4),
+`P#` char(4),
+`J#` char(4),
+Qty char(10)
+);
++-------+------------+------+-----+---------+-------+
+| Field | Type       | Null | Key | Default | Extra |
++-------+------------+------+-----+---------+-------+
+| S#    | varchar(4) | YES  |     | NULL    |       |
+| P#    | char(4)    | YES  |     | NULL    |       |
+| J#    | char(4)    | YES  |     | NULL    |       |
+| Qty   | char(10)   | YES  |     | NULL    |       |
++-------+------------+------+-----+---------+-------+
+
+insert into s
+values
+('s1','akshay','10','paris'),
+('s2','amit','20','athens'),
+('s3','akash','30','london');
+
+insert into p
+values
+('p1','gear','white','13kg','paris'),
+('p2','cam_shaft','gray','14kg','london'),
+('p3','chain','black','11kg','athens');
+
+insert into j
+values
+('j1','xxx','london'),
+('j2','yyy','athens'),
+('j3','zzz','paris');
+
+
+Q.5) select *from s;
++------+--------+--------+--------+
+| S#   | sname  | status | city   |
++------+--------+--------+--------+
+| s1   | akshay | 10     | paris  |
+| s2   | amit   | 20     | athens |
+| s3   | akash  | 30     | london |
++------+--------+--------+--------+
+
+Q.6) select `s#`,sname from s;
++------+--------+
+| s#   | sname  |
++------+--------+
+| s1   | akshay |
+| s2   | amit   |
+| s3   | akash  |
++------+--------+
+
+Q.7) select pname,color from p
+     where city='london';
++-----------+-------+
+| pname     | color |
++-----------+-------+
+| cam_shaft | gray  |
++-----------+-------+
+
+Q.8) select *from s
+     where city='london';
++------+-------+--------+--------+
+| S#   | sname | status | city   |
++------+-------+--------+--------+
+| s3   | akash | 30     | london |
++------+-------+--------+--------+
+
+Q.9) select *from s
+     where city='paris';or city='athens';
++------+--------+--------+-------+
+| S#   | sname  | status | city  |
++------+--------+--------+-------+
+| s1   | akshay | 10     | paris |
++------+--------+--------+-------+
+
+Q.10) select *from p
+      where city='athens';
++------+-------+-------+--------+--------+
+| P#   | Pname | Color | Weignt | City   |
++------+-------+-------+--------+--------+
+| p3   | chain | black | 11kg    | athens |
++------+-------+-------+--------+--------+
+
+Q.11) select pname from p
+      where weignt > '12kg' and weignt < '15kg';
++-----------+
+| pname     |
++-----------+
+| gear      |
+| cam_shaft |
++-----------+
+
+Q.12) select *from s
+      where status >= '20';
++------+-------+--------+--------+
+| S#   | sname | status | city   |
++------+-------+--------+--------+
+| s2   | amit  | 20     | athens |
+| s3   | akash | 30     | london |
++------+-------+--------+--------+
+
+Q.13) select *from s
+      where city not in('london');
++------+--------+--------+--------+
+| S#   | sname  | status | city   |
++------+--------+--------+--------+
+| s1   | akshay | 10     | paris  |
+| s2   | amit   | 20     | athens |
++------+--------+--------+--------+
+
+Q.14) select city from s;
++--------+
+| city   |
++--------+
+| paris  |
+| athens |
+| london |
++--------+
