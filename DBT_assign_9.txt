@@ -1,0 +1,79 @@
+Q.1) Write a query that lists each order number followed by the name of the customer who made the order.
+
+select onum,cname from orders o,customers c
+where o.cnum = c.cnum;
++------+----------+
+| onum | cname    |
++------+----------+
+| 3001 | Pereira  |
+| 3003 | Hoffman  |
+| 3002 | Cisneros |
+| 3005 | Liu      |
+| 3006 | Pereira  |
+| 3009 | Giovanni |
+| 3007 | Grass    |
+| 3008 | Clemens  |
+| 3010 | Grass    |
+| 3011 | Clemens  |
++------+----------+
+
+Q.2) Write a query that gives the names of both the salesperson and the customer for each order along with the order number.
+
+select sname,cname,onum from salepeople s,customers c,orders o
+where o.snum = c.snum and o.snum = s.snum;
++---------+----------+------+
+| sname   | cname    | onum |
++---------+----------+------+
+| Peel    | Hoffman  | 3003 |
+| Peel    | Clemens  | 3003 |
+| Peel    | Cisneros | 3003 |
+| Peel    | Pereira  | 3003 |
+| Seeres  | Liu      | 3005 |
+| Seeres  | Grass    | 3005 |
+| Axelrod | Giovanni | 3009 |
+| Seeres  | Liu      | 3007 |
+| Seeres  | Grass    | 3007 |
+| Peel    | Hoffman  | 3008 |
+| Peel    | Clemens  | 3008 |
+| Peel    | Cisneros | 3008 |
+| Peel    | Pereira  | 3008 |
+| Seeres  | Liu      | 3010 |
+| Seeres  | Grass    | 3010 |
+| Peel    | Hoffman  | 3011 |
+| Peel    | Clemens  | 3011 |
+| Peel    | Cisneros | 3011 |
+| Peel    | Pereira  | 3011 |
++---------+----------+------+
+
+Q.3) Write a query that produces all customers serviced by salespeople with a comission above 12%. 
+Output the customer's name,the salespeople's name,and the salespreson's rate of commission.
+
+select cname,salepeople.snum,comm from customers,salepeople
+where customers.snum = salepeople.snum
+having comm > .12;
++-------+------+------+
+| cname | snum | comm |
++-------+------+------+
+| Liu   | 1002 | 0.13 |
+| Grass | 1002 | 0.13 |
++-------+------+------+
+
+Q.4) Write a query that calculates the amount of the salesperson's commission on each order by a customer with a rating above 100.
+
+select amt,comm from customers,salepeople,orders
+where customers.snum = salepeople.snum and customers.snum = orders.snum
+and rating > 100;
++---------+------+
+| amt     | comm |
++---------+------+
+|  767.19 | 0.12 |
+| 5160.45 | 0.13 |
+| 5160.45 | 0.13 |
+| 1713.23 | 0.10 |
+|   75.75 | 0.13 |
+|   75.75 | 0.13 |
+| 4723.00 | 0.12 |
+| 1309.95 | 0.13 |
+| 1309.95 | 0.13 |
+| 9891.88 | 0.12 |
++---------+------+
